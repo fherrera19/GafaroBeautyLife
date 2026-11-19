@@ -30,6 +30,10 @@
             scroll-behavior: smooth;
         }
 
+        html {
+            scroll-padding-top: 115px;
+        }
+
         body {
             background-color: #fafafa;
             color: var(--dark);
@@ -45,6 +49,7 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
+            gap: 6px;
         }
 
         .topbar span i {
@@ -58,6 +63,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            width: 100%;
         }
 
         .navbar {
@@ -132,6 +138,9 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--primary-dark);
+            background: transparent;
+            border: none;
+            padding: 4px 8px;
         }
 
         .hero {
@@ -326,8 +335,10 @@
 
         .product-body img {
             width: 100%;
-            height: 220px;
-            object-fit: cover;
+            max-height: 280px;
+            height: auto;
+            object-fit: contain;
+            background-color: var(--light);
             border-radius: 8px;
             border: 2px solid var(--secondary);
         }
@@ -359,13 +370,15 @@
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 15px;
             margin-bottom: 28px;
+            align-items: center;
         }
 
         .gallery-grid img {
             width: 100%;
-            height: 210px;
-            object-fit: cover;
-            object-position: top center;
+            max-height: 260px;
+            height: auto;
+            object-fit: contain;
+            background-color: var(--white);
             border-radius: 10px;
             border: 2px solid var(--primary);
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -545,17 +558,39 @@
         }
 
         @media (max-width: 900px) {
+            html {
+                scroll-padding-top: 95px;
+            }
+
+            .navbar {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .logo img {
+                height: 62px;
+                max-width: 130px;
+            }
+
+            .logo h1 {
+                font-size: 1.05rem;
+            }
+
+            .logo span {
+                font-size: 0.72rem;
+            }
+
             .nav-links {
                 display: none;
                 flex-direction: column;
-                position: absolute;
-                top: 105px;
-                left: 0;
+                position: static;
                 width: 100%;
                 background: var(--secondary);
-                box-shadow: 0 5px 10px rgba(0,0,0,0.15);
-                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.12);
+                padding: 15px 0;
+                gap: 12px;
                 text-align: center;
+                border-top: 1px solid rgba(192, 128, 129, 0.35);
             }
 
             .nav-links.active {
@@ -567,22 +602,33 @@
             }
 
             .hero h2 {
-                font-size: 2rem;
+                font-size: 1.85rem;
             }
 
             .logo-meaning-card {
                 grid-template-columns: 1fr;
-                padding: 28px;
-                gap: 25px;
+                padding: 24px;
+                gap: 22px;
             }
 
             .about-grid {
                 grid-template-columns: 1fr;
             }
 
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
             .footer-content, .footer-logo, .credits {
                 flex-direction: column;
                 text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -603,9 +649,9 @@
                     <span>Salud, Belleza y Bienestar Integral</span>
                 </div>
             </a>
-            <div class="menu-toggle" id="mobile-menu">
+            <button type="button" class="menu-toggle" id="mobile-menu" aria-label="Abrir menú de navegación">
                 <i class="fas fa-bars"></i>
-            </div>
+            </button>
             <ul class="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#servicios">Servicios</a></li>
